@@ -1,0 +1,35 @@
+def merge(arr, l, m, r):
+    start2=m+1
+    start=l
+    if arr[m]<=arr[start2]:
+        return 
+    
+    while(start<=m and start2<=r):
+        if arr[start]<arr[start2]:
+            start+=1 
+            
+        else:
+            val=arr[start2]
+            index=start2
+
+            while(index!=start):
+                arr[index]=arr[index-1]
+                index-=1
+            arr[start]=val
+            start+=1
+            start2+=1
+            m+=1 
+
+def mergeSort(arr,start,end):
+    if start==end: return 
+    mid=(start+end)//2 
+    mergeSort(arr,start,mid)
+    mergeSort(arr,mid+1,end)
+    merge(arr,start,mid,end)
+
+arr=[1,2,8,3,4,9,7,5]
+print(mergeSort(arr,0,len(arr)-1),arr)
+    
+    
+    
+    
