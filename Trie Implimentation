@@ -1,0 +1,44 @@
+class TrieNode:
+    def __init__(self):
+        self.char_arr = [None]*26
+        self.end_of_word = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+        
+    def insert(self, word):
+        temp = self.root
+        
+        for i in range(len(word)):
+            if (not temp.char_arr[ord(word[i]) - ord("a") ] ):
+                temp.char_arr[ord(word[i]) - ord("a")] = TrieNode()
+                temp = temp.char_arr[ord(word[i]) - ord("a")]
+        
+        temp.end_of_word = True 
+        
+    def search(self, word):
+        temp = self.root 
+        
+        for i in range(len(word)):
+            if (temp.char_arr[ord(word[i])-ord("a")]): 
+                temp = temp.char_arr[ord(word[i])- ord("a")]
+        if temp.end_of_word:
+            return True
+        return False
+
+    def search_prefix(self, prefix):
+        temp = self.root
+        
+        for i in range(len(prefix)):
+            if not (temp.char_arr[ord(prefix[i]) - ord("a")]):
+                return False
+            temp = temp.char_arr[ord(prefix[i]) - ord("a")]
+        return True
+
+
+trie = Trie()
+trie.insert("santosh")
+trie.insert("amit")
+trie.insert("mohit")
+print(trie.search_prefix("ma"))
