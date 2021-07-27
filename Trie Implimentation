@@ -11,9 +11,9 @@ class Trie:
         temp = self.root
         
         for i in range(len(word)):
-            if (not temp.char_arr[ord(word[i]) - ord("a") ] ):
+            if not (temp.char_arr[ord(word[i]) - ord("a") ] ):
                 temp.char_arr[ord(word[i]) - ord("a")] = TrieNode()
-                temp = temp.char_arr[ord(word[i]) - ord("a")]
+            temp = temp.char_arr[ord(word[i]) - ord("a")]
         
         temp.end_of_word = True 
         
@@ -40,5 +40,7 @@ class Trie:
 trie = Trie()
 trie.insert("santosh")
 trie.insert("amit")
+trie.insert("mohini")
 trie.insert("mohit")
-print(trie.search_prefix("ma"))
+trie.insert("sahu")
+print(trie.search_prefix("sa"))
