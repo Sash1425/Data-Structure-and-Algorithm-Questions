@@ -1,0 +1,16 @@
+
+def findSubset(arr, idx, temp):
+    if (idx >= len(arr)):
+        print(temp)
+        return
+    findSubset(arr, idx +1, temp)
+    temp.append(arr[idx])
+    findSubset(arr, idx + 1, temp)
+    temp.pop()
+
+temp = []
+findSubset(["a","b","c"], 0, temp)
+
+# Press the green button in the gutter to run the script.
+# if __name__ == '__main__':
+#     findSubset(["a","b","c"], 0, [])
